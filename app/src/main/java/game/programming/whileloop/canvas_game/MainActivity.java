@@ -22,6 +22,7 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("Start", "Application has started");
 
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -43,20 +44,25 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
         Log.i("happened current share",String.valueOf(settings.getString("Current_class","DefaultClass")));
         Log.i("happened current share",String.valueOf(settings.getInt("Current_pos",0)));
 
+
         if (firstRun) {
+            Log.d("FIRST RUN", "App is run first time");
             // here run your first-time instructions, for programming :
             SharedPreferences settings1 = getSharedPreferences("prefs", 0);
             SharedPreferences.Editor editor = settings1.edit();
             editor.putString("Current_class", "z1");
             editor.putInt("Current_pos", 1);
-            editor.commit();
+            editor.putBoolean("Quest_tutorial", true);
+            editor.apply();
 
             //initialize database in the 1st run
             Intent intent = new Intent(this, database_data_entry_initial.class);
             startActivity(intent);
             finish();
-        }else{
+        }
+        else {
             //not the first run, check for database updates WITHOUT force downloading
+            Log.d("SECOND RUN", "The app has run more than once");
             FirebaseData fd = new FirebaseData(this);
             fd.syncQuestions(new CallBack() {
                 @Override
@@ -125,10 +131,33 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
     }
 
     public void Go_Ques(View view){
-        Intent transition_page = new Intent(this,NewQuestionView.class);
-        startActivity(transition_page);
-        finish();
+        SharedPreferences settings = getSharedPreferences("prefs", 0);
+        Boolean tutorial = settings.getBoolean("Quest_tutorial", false);
+        if (!tutorial) {
+            Intent transition_page = new Intent(this,NewQuestionView.class);
+            startActivity(transition_page);
+            finish();
+        }
+
+        else {
+            //on boarding for first comers code goes here
+            Intent transition_page = new Intent(this, Quest_Tutorial.class);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("Quest_tutorial", false);
+            editor.apply();
+            startActivity(transition_page);
+            finish();
+        }
+
     }
+
+    //Added by me
+//    public void Go_Questions(View view) {
+//        Intent transition_page = new Intent(this,NewQuestionView.class);
+//        startActivity(transition_page);
+//        finish();
+//    }
+
     public void Go_Mult(View view){
         Intent transition_page = new Intent(this,MultiplayerActivity.class);
         startActivity(transition_page);
