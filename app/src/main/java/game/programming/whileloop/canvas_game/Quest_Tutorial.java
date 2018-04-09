@@ -29,6 +29,7 @@ public class Quest_Tutorial extends BaseGameActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.v("QUEST_CLASS", "Started Quest Tutorial");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quest_tutorial);
 
@@ -86,12 +87,12 @@ public class Quest_Tutorial extends BaseGameActivity {
         }
     };
 
-    //Added by me
     public void Go_Questions(View view) {
         Intent transition_page = new Intent(this,NewQuestionView.class);
         startActivity(transition_page);
         finish();
     }
+
 
     @Override
     public void onSignInFailed() {

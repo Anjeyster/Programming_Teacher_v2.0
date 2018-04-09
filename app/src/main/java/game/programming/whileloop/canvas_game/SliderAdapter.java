@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.pushpika.canvas_game.R;
 
@@ -33,12 +32,6 @@ public class SliderAdapter extends PagerAdapter {
             R.drawable.page_4
     };
 
-    public String[] slideDesc = {
-            "Description for first guide",
-            "Description for second guide",
-            "Description for third guide",
-            ""
-    };
 
 
     @Override
