@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
@@ -45,6 +46,7 @@ public class NewQuestionView extends BaseGameActivity {
     String text="",id="";
     String text_arr [] = new String [100];
     String id_arr [] = new String[100];
+    MediaPlayer mediaPlayer;
     int cur_len=0;
     int score;
 
@@ -433,6 +435,7 @@ public class NewQuestionView extends BaseGameActivity {
 
     public void correctAnswer(View view) {
 
+        mediaPlayer = MediaPlayer.create(this, R.raw.applause);
         ImageView image = new ImageView(this);
         image.setImageResource(R.mipmap.check);
 
@@ -448,7 +451,7 @@ public class NewQuestionView extends BaseGameActivity {
                         }).
                         setView(image);
         builder.create().show();
-
+        mediaPlayer.start();
     }
 
     public void wrongAnswer(View view) {

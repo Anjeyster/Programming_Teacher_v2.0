@@ -1,88 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="game.programming.whileloop.canvas_game.MainActivity">
 
     <TextView
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:src="@mipmap/logo"
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:contentDescription="TODO" />
 
     <TextView
-        android:paddingTop="6dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#323232"
-        android:textAlignment="center"
-        android:text="Programming Teacher"
         android:id="@+id/textView8"
-        android:textSize="20sp"/>
-
-    <TextView
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ff3300"
+        android:paddingTop="6dp"
+        android:text="@string/programming_teacher_2"
         android:textAlignment="center"
-        android:text="Think - Solve - Score"
-        android:textSize="32sp"/>
+        android:textColor="#323232"
+        android:textSize="20sp" />
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="@string/think_solve_score"
+        android:textAlignment="center"
+        android:textColor="#ff3300"
+        android:textSize="32sp" />
 
 
     <LinearLayout
-        android:paddingTop="25dp"
-        android:orientation="vertical"
-        android:layout_gravity="center"
+        android:id="@+id/contentView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="25dp"
+        android:visibility="visible">
 
         <Button
             android:id="@+id/button_quest"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#ff3300"
+            android:onClick="Go_Ques"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:onClick="Go_Ques"
-            android:text="Go To quest"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content" />
+            android:text="Go To quest" />
 
         <Button
             android:id="@+id/button_multiplayer"
-            android:layout_marginTop="5dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:background="#ff6c00"
+            android:onClick="Go_Mult"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:onClick="Go_Mult"
-            android:text="Multiplayer"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content" />
+            android:text="Multiplayer" />
 
         <Button
             android:id="@+id/sign_in_button"
-            android:layout_marginTop="5dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:background="#fd9900"
-            android:text="SIGN IN"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content" />
-
-
+            android:text="SIGN IN" />
 
 
     </LinearLayout>
@@ -95,102 +95,97 @@
     </LinearLayout>
 
     <LinearLayout
-        android:paddingTop="5dp"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="vertical"
+        android:paddingTop="5dp">
 
         <Button
             android:id="@+id/show_leaderboard"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#ff6c00"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
             android:text="leaderboard"
-            android:layout_width="250dp"
-            android:visibility="gone"
-            android:layout_height="wrap_content" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/show_achievements"
-            android:layout_marginTop="5dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"
+            android:layout_marginTop="5dp"
             android:background="#ff6c00"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
             android:text="achievements"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/sign_out_button"
-            android:visibility="gone"
-            android:layout_marginTop="5dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:background="#ff6c00"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
             android:text="Sign Out"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content" />
-
+            android:visibility="gone" />
 
 
     </LinearLayout>
 
 
-
     <TextView
-        android:layout_weight="2"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        android:layout_weight="2" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/imageButton_help"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="#ff6c00"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:text="Help"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
+            android:text="Help" />
 
 
         <Button
             android:id="@+id/imageButton_Example"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="#ff6c00"
+            android:onClick="Go_Example"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:text="Example"
-            android:onClick="Go_Example"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
+            android:text="Example" />
 
 
         <Button
             android:id="@+id/imageButton_about"
-            android:onClick="Go_About"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="#ff6c00"
+            android:onClick="Go_About"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
-            android:text="About"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:text="About" />
 
 
     </LinearLayout>
-
 
 
 </LinearLayout>

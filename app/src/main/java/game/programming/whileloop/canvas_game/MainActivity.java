@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 
 
@@ -18,6 +19,8 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
     public static int position_width=0,position_height=0,cur_position=1,is_increment=-1,current_pos=1,target_pos=1;
     public static String target_class="P"; // A for
     CheckLogged sessionLogin;
+    SoundPlayer soundPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
         Log.i("Data check","successfully");
         Log.i("happened current share",String.valueOf(settings.getString("Current_class","DefaultClass")));
         Log.i("happened current share",String.valueOf(settings.getInt("Current_pos",0)));
+
+        soundPlayer = new SoundPlayer(this);
 
 
         if (firstRun) {
@@ -73,6 +78,8 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
             },false);
         }
 
+        //For animation
+
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
@@ -81,7 +88,7 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
 
 
 
-    }
+}
 
     @Override
     public void onClick(View view) {
@@ -131,6 +138,7 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
     }
 
     public void Go_Ques(View view){
+        soundPlayer.playBtn();
         SharedPreferences settings = getSharedPreferences("prefs", 0);
         Boolean tutorial = settings.getBoolean("Quest_tutorial", false);
         if (!tutorial) {
@@ -159,12 +167,14 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
 //    }
 
     public void Go_Mult(View view){
+        soundPlayer.playBtn();
         Intent transition_page = new Intent(this,MultiplayerActivity.class);
         startActivity(transition_page);
         finish();
     }
 
     public void Go_Help(View view){
+        soundPlayer.playBtn();
         Intent intent = new Intent(this, HelpActivity.class);
 
         startActivity(intent);
@@ -172,16 +182,19 @@ public class MainActivity extends BaseGameActivity implements View.OnClickListen
     }
 
     public void Go_About(View view){
+        soundPlayer.playBtn();
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
         finish();
     }
 
     public void Go_Example(View view){
+        soundPlayer.playBtn();
         Intent intent = new Intent(this, ExampleActivity.class);
         startActivity(intent);
         finish();
     }
+
 
 }
 

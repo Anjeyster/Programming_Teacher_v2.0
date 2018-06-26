@@ -70,10 +70,12 @@
         <activity
             android:name="game.programming.whileloop.canvas_game.WinActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="game.programming.whileloop.canvas_game.MultiplayerActivity"
+        <activity
+            android:name="game.programming.whileloop.canvas_game.MultiplayerActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="game.programming.whileloop.canvas_game.Quest_Tutorial"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="game.programming.whileloop.canvas_game.Quest_Tutorial"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
