@@ -11,6 +11,7 @@
     <string name="think_solve_score">Think . Solve . Score</string>
     <string name="take_me_to_the_quest">Take me to the Quest</string>
     <string name="programming_teacher">Programming Teacher</string>
+    <string name="programming_teacher_2">Programming Teacher</string>
     <string name="_2016_programming_teacher_all_rights_reserved">©2016 Programming Teacher. All rights reserved.</string>
     <string name="v1_0">v2.0</string>
     <string name="this_application_helps_you_to_enhance_your_programming_and_algorithemic_knowledge_start_learning_today_and_see_where_programmingteacher_can_take_you">This application helps you to enhance your programming and algorithemic knowledge. Start learning today and see where ProgrammingTeacher can take you.</string>
@@ -31,8 +32,6 @@
     <string name="txt_end">Think . Solve . Score</string>
     <string name="txt_five">Click “Undo action ” to reset your selections. Click “Check answer” once you finished. You can use the “Game board icon to view your position”.
 </string>
-
-
 
 
     <!-- Multiplayer -->

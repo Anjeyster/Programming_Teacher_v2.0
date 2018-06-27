@@ -49,6 +49,7 @@ public class NewQuestionView extends BaseGameActivity {
     MediaPlayer mediaPlayer;
     int cur_len=0;
     int score;
+    SoundPlayer soundPlayer;
 
     //multiple answers
     String answers[];
@@ -98,6 +99,7 @@ public class NewQuestionView extends BaseGameActivity {
             //handle question not found here
             Log.v("QUESTION",e.getMessage());
         }
+        soundPlayer = new SoundPlayer(this);
 
     }
 
@@ -260,7 +262,7 @@ public class NewQuestionView extends BaseGameActivity {
         Spannable endtxt = new SpannableString(" $");
         endtxt.setSpan(new ForegroundColorSpan(Color.RED),0,endtxt.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.append(endtxt);
-
+        soundPlayer.playBtn();
 
     }
 

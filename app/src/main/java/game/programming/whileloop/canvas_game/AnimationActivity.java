@@ -20,6 +20,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pushpika.canvas_game.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AnimationActivity extends AppCompatActivity {
@@ -33,6 +41,11 @@ public class AnimationActivity extends AppCompatActivity {
     ConstraintLayout layout;
     ImageView token;
     TextView vcpText;
+
+    //vcp stuff
+    DatabaseReference vcpDatabase;
+    List<VCP> vcpList;
+    long result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +68,35 @@ public class AnimationActivity extends AppCompatActivity {
             current_pos = MainActivity.current_pos;
             target_pos = MainActivity.target_pos;
 
-            ViewTreeObserver observer = layout.getViewTreeObserver();
-            observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            //retrieve vcp from firebase
+            vcpDatabase = FirebaseDatabase.getInstance().getReference("vcp").child("values");
+            vcpList = new ArrayList<VCP>();
+
+            vcpDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onGlobalLayout() {
-                    init();
-                    layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    startBoardAnimation(current_pos, target_pos);
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot vcpSnapshot: dataSnapshot.getChildren()) {
+                        VCP vcp = vcpSnapshot.getValue(VCP.class);
+                        vcpList.add(vcp);
+                    }
+                    findCurrentVcpValue(target_pos);
+                    ViewTreeObserver observer = layout.getViewTreeObserver();
+                    observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            init();
+                            layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            startBoardAnimation(current_pos, target_pos);
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
                 }
             });
+
         } else {
             bd_layout = new board_layout(this);
             bd_layout.setBackgroundResource(R.drawable.board_new2);
@@ -372,6 +405,17 @@ public class AnimationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "Please wait .....", Toast.LENGTH_SHORT).show();
+    }
+
+    private long findCurrentVcpValue(long question) {
+        for (int i=0; i<vcpList.size(); i++) {
+            VCP current = vcpList.get(i);
+            if (current.question == question) {
+                result = current.vcp;
+                vcpText.append(String.valueOf(result));
+            }
+        }
+        return -1;
     }
 
 }
