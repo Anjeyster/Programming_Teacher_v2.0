@@ -36,14 +36,13 @@
         android:id="@+id/vcpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="5dp"
         android:background="@android:color/holo_orange_dark"
         android:padding="5dp"
-        android:text="VCP : 12"
+        android:text="VCP : "
         android:textColor="@android:color/background_light"
-        android:layout_marginLeft="5dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="5dp" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
